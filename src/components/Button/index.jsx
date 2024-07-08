@@ -1,11 +1,11 @@
+import { Button } from "./styles"
 
 
-
-
-function DefaultButton(){
+//Os 3 pontinhos, se chama spread operation, pega todo o resto.
+function DefaultButton({ children, ...props }){
     
     return (
-        <Button>Ok Ok</Button>
+        <Button {...props}>{children}</Button>
     )
 }
 
