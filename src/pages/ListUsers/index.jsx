@@ -1,21 +1,60 @@
+import { useEffect, useState } from 'react';
+import api from '../../services/api';
+
 
 import { Button } from "../../components/Button/styles";
 import TopBackground from "../../components/TopBackground";
+import Trash from '../../assets/trash.svg'
+
+import { Container, ContainerUsers, CardUsers, TrashIcon, Title, AvatarUsers } from './styles'
 
 
 
 
 function ListUsers() {
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+
+        async function getUsers() {
+            const { data } = await api.get('/usuarios')
+
+            setUsers(data)
+        }
+        getUsers()
+    }, [])
+
+
+    //Toda vez que a tela carrega, o useEffect e chamado. Efeito colateral
+    //Toda vez que uma determinada variavel muda de valor, ele e chamado.
+
+
 
 
     return (
-        <div>
+        <Container>
 
             <TopBackground />
+            <Title>Lista de Usuários</Title>
 
-            <h1>Listagem de Usuários</h1>
-            <Button>Voltar</Button>
-        </div>
+
+            <ContainerUsers>
+                {users.map((users) => (
+                    <CardUsers key={users.id}>
+                        <AvatarUsers src={`https://avatar.iran.liara.run/public?username=${users.id}`}/>
+                        <div>
+                            <h4>{users.name}</h4>
+                            <p>{users.email}</p>
+                            <p>{users.age}</p>
+                        </div>
+                        <TrashIcon src={Trash} alt='iconeLixo'/>
+                    </CardUsers>
+                ))}
+            </ContainerUsers>
+
+
+            <Button type="button">Voltar</Button>
+        </Container>
     )
 }
 
