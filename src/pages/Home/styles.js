@@ -7,7 +7,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-evenly;
     padding: 20px;
-    height: 100vh;
+    height: 100%;
 `
 
 export const Form = styled.form`
@@ -24,6 +24,7 @@ export const Title = styled.h2`
     font-size: 35px;
     font-style: oblique;
     font-weight: 500;
+    margin-top: 20px;
 `
 
 export const ContainerInputs = styled.div`

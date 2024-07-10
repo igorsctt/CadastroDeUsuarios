@@ -10,6 +10,7 @@ export const Button = styled.button`
     width: fit-content;
     cursor: pointer;
     border-radius: 30px;
+    margin: 5px 0;
 
     &:hover {
         opacity: ${props => props.theme === 'primary' ? '0.8' : '0.5'};

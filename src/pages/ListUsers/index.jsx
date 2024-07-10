@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 
 import { Button } from "../../components/Button/styles";
@@ -11,7 +12,11 @@ import { Container, ContainerUsers, CardUsers, TrashIcon, Title, AvatarUsers } f
 
 
 
+
 function ListUsers() {
+
+    const navigate = useNavigate()
+
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -23,6 +28,15 @@ function ListUsers() {
         }
         getUsers()
     }, [])
+
+    async function deleteUsers(id) {
+        await api.delete(`/usuarios/${id}`)
+
+        const updateUsers = users.filter(user => user.id !== id)
+
+        setUsers(updateUsers)
+    }
+
 
 
     //Toda vez que a tela carrega, o useEffect e chamado. Efeito colateral
@@ -41,19 +55,19 @@ function ListUsers() {
             <ContainerUsers>
                 {users.map((users) => (
                     <CardUsers key={users.id}>
-                        <AvatarUsers src={`https://avatar.iran.liara.run/public?username=${users.id}`}/>
+                        <AvatarUsers src={`https://avatar.iran.liara.run/public?username=${users.id}`} />
                         <div>
                             <h4>{users.name}</h4>
                             <p>{users.email}</p>
                             <p>{users.age}</p>
                         </div>
-                        <TrashIcon src={Trash} alt='iconeLixo'/>
+                        <TrashIcon src={Trash} alt='iconeLixo' onClick={() => deleteUsers(users.id)} />
                     </CardUsers>
                 ))}
             </ContainerUsers>
 
 
-            <Button type="button">Voltar</Button>
+            <Button type="button" onClick={() => navigate('/')}>Voltar</Button>
         </Container>
     )
 }
