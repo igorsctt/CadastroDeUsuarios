@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
-
-
 import { Button } from "../../components/Button/styles";
 import TopBackground from "../../components/TopBackground";
 import Trash from '../../assets/trash.svg'
-
 import { Container, ContainerUsers, CardUsers, TrashIcon, Title, AvatarUsers } from './styles'
-
-
-
 
 
 function ListUsers() {
 
     const navigate = useNavigate()
-
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -37,21 +30,13 @@ function ListUsers() {
         setUsers(updateUsers)
     }
 
-
-
     //Toda vez que a tela carrega, o useEffect e chamado. Efeito colateral
     //Toda vez que uma determinada variavel muda de valor, ele e chamado.
 
-
-
-
     return (
         <Container>
-
             <TopBackground />
             <Title>Lista de Usuários</Title>
-
-
             <ContainerUsers>
                 {users.map((users) => (
                     <CardUsers key={users.id}>
@@ -65,8 +50,6 @@ function ListUsers() {
                     </CardUsers>
                 ))}
             </ContainerUsers>
-
-
             <Button type="button" onClick={() => navigate('/')}>Voltar</Button>
         </Container>
     )
