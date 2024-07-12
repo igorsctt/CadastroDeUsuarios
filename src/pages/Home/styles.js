@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: #181F36;
@@ -8,7 +8,13 @@ export const Container = styled.div`
     justify-content: space-evenly;
     padding: 20px;
     height: 100vh;
-`
+    
+
+    @media (max-width: 768px) {
+        padding: 10px;
+        height: 130vh;
+    }
+`;
 
 export const Form = styled.form`
     display: flex;
@@ -16,7 +22,7 @@ export const Form = styled.form`
     align-items: center;
     gap: 20px;
     max-width: 500px;
-`
+`;
 
 export const Title = styled.h2`
     color: #FFFFFF;
@@ -25,13 +31,16 @@ export const Title = styled.h2`
     font-style: oblique;
     font-weight: 500;
     margin-top: 20px;
-`
+
+    @media (max-width: 768px) {
+        font-size: 5vw;
+    }
+`;
 
 export const ContainerInputs = styled.div`
     display: flex;
     gap: 20px;
-    
-`
+`;
 
 export const Input = styled.input`
     border-radius: 10px;
@@ -40,7 +49,7 @@ export const Input = styled.input`
     padding: 12px 20px;
     outline: none;
     width: 100%;
-`
+`;
 
 export const InputLabel = styled.label`
     color: #FFFFFF;
@@ -52,9 +61,4 @@ export const InputLabel = styled.label`
         color: #EF4F45;
         font-weight: bold;
     }
-`
-
-
-
-
-
+`;
